@@ -1,3 +1,3 @@
 # Hive Image Upload Wrapper
 
-Wraps IPFS Image Upload for d.buzz
+An Image Upload micro service for d.buzz which wraps IPFS credentials for d.buzz
