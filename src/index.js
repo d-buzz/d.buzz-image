@@ -5,8 +5,11 @@ const cors = require('cors')
 const bodyParser = require('body-parser')
 
 app.use(cors())
-app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json())
+app.use(bodyParser.urlencoded({ extended: true }))
+
+require('dotenv').config()
+const port = process.env.APP_PORT
 
 app.get('/', (req, res) => {
   res.send({
@@ -15,4 +18,4 @@ app.get('/', (req, res) => {
 })
 
 app.use('/api/v1', api)
-app.listen(3040, () => console.log('server running on port 3040'))
+app.listen(port, () => console.log(`server running on port ${port}`))
