@@ -1,7 +1,7 @@
 # DBuzz Image Upload Wrapper
 ### Develop by *[postnzt](https://www.facebook.com/postNZT/)*
 
-An Image Upload micro service for d.buzz which wraps IPFS credentials for d.buzz
+An Image Upload micro service for DBuzz which wraps IPFS credentials.
 
 ## Installation
 ```bash
