@@ -1,6 +1,5 @@
 require('dotenv').config()
 const fleekStorage = require('@fleekhq/fleek-storage-js')
-const { error } = require('console')
 const fs = require('fs')
 
 const apiKey = process.env.API_KEY
@@ -19,16 +18,12 @@ const imageUploadFleek = async(data) => {
     }
 
     const result = await fleekStorage.upload(imageFile)
-    
-    try {
-      const imagePath = `dbuzz/${filename}`
-      fs.unlinkSync(imagePath)
-      console.log('file successfully removed')
-    } catch (error) {
-      console.log({error})
-    }
+    const imagePath = `dbuzz/${filename}`
+    fs.unlinkSync(imagePath)
+    console.log('file successfully removed')
 
     return result
+
   } catch(error) {
     const imagePath = `dbuzz/${filename}`
     fs.unlinkSync(imagePath)
