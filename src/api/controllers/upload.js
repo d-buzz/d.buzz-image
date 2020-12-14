@@ -1,5 +1,6 @@
 require('dotenv').config()
 const fleekStorage = require('@fleekhq/fleek-storage-js')
+const { error } = require('console')
 const fs = require('fs')
 
 const apiKey = process.env.API_KEY
@@ -28,10 +29,11 @@ const imageUploadFleek = async(data) => {
     }
 
     return result
-  } catch(e) {
+  } catch(error) {
     const imagePath = `dbuzz/${filename}`
     fs.unlinkSync(imagePath)
-    console.log('error', e)
+    console.log('error', error)
+    return res.status(400).send({ message: 'Image Upload error has occurred' })
   }
 
 }
