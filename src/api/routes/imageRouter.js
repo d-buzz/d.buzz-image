@@ -14,25 +14,23 @@ const storage = multer.diskStorage({
 
 const upload = multer({
   storage: storage,
-  limits: {
-    fileSize: 50 * 1024 * 1024  
-  },
-})
+  limits: { fileSize: 10 * 1024 * 1024 }
+}).single('image')
 
 const imageRouter = Router()
 
-imageRouter.post('/upload', upload.single('image'),async (req, res) => {
-  try {
+imageRouter.post('/upload', function (req, res) {
+   upload (req, res, async function (err) {
+    if (err instanceof multer.MulterError) {
+      return res.status(400).send({ message: 'Image Upload error has occurred! Image should not be more than 10 mb' })
+    } else if (err) {
+      return res.status(400).send({ message: 'Image Upload error has occurred!' })
+    }
     const data = req.file
     const result = await uploadFleek(data)
 
     res.json(result)
-    
-  } catch (error) {
-    console.log({error})
-    res.status(400).send(error)
-  }
-    
+  })
 })
 
 module.exports = imageRouter
