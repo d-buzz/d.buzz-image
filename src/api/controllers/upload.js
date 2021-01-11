@@ -17,7 +17,9 @@ const imageUploadFleek = async(data) => {
       data: content,
     }
 
-    const result = await fleekStorage.upload(imageFile)
+    let result = await fleekStorage.upload(imageFile)
+
+    result.hashV0 = result.hashV0.replace(/['"]+/g, '')
     const imagePath = `dbuzz/${filename}`
     fs.unlinkSync(imagePath)
     console.log('file successfully removed')
