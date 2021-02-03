@@ -1,5 +1,5 @@
 # DBuzz Image Upload Wrapper
-### Develop by *[postnzt](https://www.facebook.com/postNZT/)*
+### Developed by *[postnzt](https://www.facebook.com/postNZT/)*
 
 An Image Upload micro service for DBuzz which wraps IPFS credentials.
 
