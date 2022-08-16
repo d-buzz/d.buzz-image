@@ -5,16 +5,15 @@ const path = require("path")
 
 
 const storage = multer.diskStorage({
-  destination: './dbuzz',
+  destination: './dbuzz-images',
   
   filename: (req, file, cb) => {
-      return cb(null, `file-${Date.now()}${path.extname(file.originalname)}`)
+	return cb(null, `dbuzz-image-${Date.now()}.${file.mimetype.split('/')[1]}`)
   }
 })
 
 const upload = multer({
   storage: storage,
-  limits: { fileSize: 10 * 1024 * 1024 }
 })
 
 const imageRouter = Router()
